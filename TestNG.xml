@@ -3,9 +3,9 @@
 
 <suite name="Automation Suite">
 
-    <test name="Login Tests">
+    <test name="End To End Tests">
         <classes>
-            <class name="tests.LoginTest"/>
+            <class name="tests.EndToEndTest"/>
         </classes>
     </test>
 
