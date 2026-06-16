@@ -3,20 +3,25 @@ package base;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.*;
+import utils.DriverManager;
 
 public class BaseTest {
 
-    public WebDriver driver;
+    protected WebDriver driver;
 
     @BeforeMethod
     public void setup() {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-        driver.get("https://www.saucedemo.com");
+        driver.get("https://www.saucedemo.com/");
+
+        // ⭐ STORE DRIVER IN THREADLOCAL
+        DriverManager.setDriver(driver);
     }
 
     @AfterMethod
-    public void teardown() {
+    public void tearDown() {
         driver.quit();
+        DriverManager.unload();
     }
 }
